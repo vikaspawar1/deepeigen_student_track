@@ -153,7 +153,7 @@ export default function AccountLayout() {
                             </svg>
 
                             <span className={`flex-1 text-left font-semibold text-base ${activeSection === "overview" ? "text-[#174CD2]" : "text-[rgba(26,33,47,0.7)]"}`}>
-                                overview
+                                Overview
                             </span>
 
                         </button>

@@ -400,7 +400,7 @@ useEffect(() => {
             <MetricCard
               title="Learning Streak"
               value={`${s.learning_streak} days`}
-              subtitle={`${breakdown.consistency?.earned ?? 0} / ${breakdown.consistency?.max ?? 100} pts earned`}
+              subtitle={`${breakdown.consistency?.earned ?? 0} / ${breakdown.consistency?.max ?? 150} pts earned`}
               icon=""
             />
 
@@ -437,19 +437,20 @@ useEffect(() => {
               </h3>
               <div className="mt-6 space-y-5">
                  <ProgressRow
-                  label="Lecture Completion"
-                  value={breakdown.lecture_completion?.percent ?? s.lectures_completed_percent}
-                  color="bg-violet-500"
-                  earned={breakdown.lecture_completion?.earned}
-                  max={breakdown.lecture_completion?.max}
-                />
-                <ProgressRow
                   label="Assignment Performance"
                   value={breakdown.assignment_performance?.percent ?? s.assignment_average}
                   color="bg-[#F59E0B]"
                   earned={breakdown.assignment_performance?.earned}
                   max={breakdown.assignment_performance?.max}
                 />
+                 <ProgressRow
+                  label="Lecture Completion"
+                  value={breakdown.lecture_completion?.percent ?? s.lectures_completed_percent}
+                  color="bg-violet-500"
+                  earned={breakdown.lecture_completion?.earned}
+                  max={breakdown.lecture_completion?.max}
+                />
+               
                 <ProgressRow
                   label="Consistency"
                   value={breakdown.consistency?.percent ?? s.consistency_score}
