@@ -123,9 +123,9 @@ export default function AccountLayout() {
                                 onClick={() => navigate("/user_dashboard", { replace: true })}
                                 className="flex items-center gap-2 py-3 lg:py-10 lg:pb-[10px] w-full"
                             >
-                                <i className="ri-dashboard-fill text-xl mt-2 text-[rgba(26,33,47,0.7)]"></i>
+                                <i className="ri-arrow-left-s-line text-xl mt-2 text-[rgba(26,33,47,0.7)]"></i>
                                 <span className="text-[rgba(26,33,47,0.7)] mt-2 cursor-pointer font-semibold text-lg leading-[93%]">
-                                    Dashboard
+                                 Go to Dashboard
                                 </span>
                             </button>
                         </div>
