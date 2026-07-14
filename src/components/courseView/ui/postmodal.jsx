@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { csrfFetch } from "../../../utils/csrfFetch";
 import api from "../../../lib/api";
@@ -9,8 +9,13 @@ const PostModal = ({ onClose, onSubmit, sections, courseId, courseUrl, selectedS
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
-  
   const handleSubmit = async () => {
     if (!title.trim() || !content.trim()) {
       setError("Please fill in both title and description");
@@ -49,7 +54,7 @@ const PostModal = ({ onClose, onSubmit, sections, courseId, courseUrl, selectedS
       }
     } catch (err) {
       console.error('Failed to create post:', err);
-      setError(err.message || 'Failed to create post. Please try again.');
+      setError(err.response?.data?.message || err.message || 'Failed to create post. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -59,7 +64,7 @@ const PostModal = ({ onClose, onSubmit, sections, courseId, courseUrl, selectedS
   const sectionName = currentSection?.name || "Week";
 
   return (
-    <div className="fixed inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center z-50 px-4">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50 px-4">
       <div className="bg-white w-full max-w-md rounded-2xl shadow-xl p-6 relative">
 
         <div className="flex justify-between items-center mb-6">

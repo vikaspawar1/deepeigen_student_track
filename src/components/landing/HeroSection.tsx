@@ -29,7 +29,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="w-full bg-white mx-auto p-3 sm:p-6 box-border sm:px-[6vw] lg:px-[10vw] overflow-x-hidden">
+      <div className="w-full bg-white mx-auto mt-4 p-3 sm:p-6 box-border sm:px-[6vw] lg:px-[10vw] overflow-x-hidden">
         {/* Brilliance Initiated Banner */}
         <div className="relative flex justify-center items-center h-[clamp(7rem,16vw,12rem)] w-full rounded-[1.25rem] overflow-hidden">
           <video

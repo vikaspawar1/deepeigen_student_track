@@ -13,7 +13,7 @@ import { Navigate } from 'react-router-dom';
 
 const forumData = {
   forum: {
-    searchPlaceholder: 'Search discussions...',
+    searchPlaceholder: 'Search topic for discussion',
     sortOptions: [
       { id: 'recent', label: 'Most Recent' },
       { id: 'popular', label: 'Most Popular' },
@@ -22,7 +22,7 @@ const forumData = {
   },
   ui: {
     buttons: {
-      writePost: 'Write a Post',
+      writePost: 'Write a post',
       viewReplies: 'View {count} replies',
       hideReplies: 'Hide replies',
       sendReply: 'Reply',
@@ -326,12 +326,15 @@ const DiscussionForum: React.FC<DiscussionForumProps> = ({
     const selectedSectionObj = sections.find(s => s.url === selectedSection);
     const selectedLabel = selectedSectionObj
       ? `${selectedSectionObj.name}${selectedSectionObj.question_count !== undefined ? ` (${selectedSectionObj.question_count})` : ''}`
-      : 'Select Section';
+      : 'Filter';
 
     return (
       <div ref={sectionRef} className={`section-dropdown ${showSectionDropdown ? 'active' : ''}`}>
         <button className="section-btn" onClick={() => setShowSectionDropdown(v => !v)}>
-          <span>{selectedLabel}</span>
+          <div className="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            <span>{selectedLabel}</span>
+          </div>
           <ChevronDown size={15} className={`chevron-icon ${showSectionDropdown ? 'rotate-180' : ''}`} />
         </button>
         <div className="dropdown-content" style={{ display: showSectionDropdown ? 'block' : 'none' }}>
@@ -381,8 +384,11 @@ const DiscussionForum: React.FC<DiscussionForumProps> = ({
 
             
             <button className="sort-btn" onClick={toggleSortDropdown}>
-              <ArrowUp size={15} />
-              <span>{getSortLabel()}</span>
+              <div className="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
+                <span>{activeSort === 'recent' ? 'Sort' : getSortLabel()}</span>
+              </div>
+              <ChevronDown size={15} className={`chevron-icon ${showSortDropdown ? 'rotate-180' : ''}`} />
             </button>
 
             
@@ -402,6 +408,7 @@ const DiscussionForum: React.FC<DiscussionForumProps> = ({
 
         {/* Row 3: Write a Post */}
         <button className="write-post-btn" onClick={handleWritePost}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
           {forumData.ui.buttons.writePost}
         </button>
 
