@@ -325,9 +325,9 @@ useEffect(() => {
   }, [s.completion_speed]);
 
   return (
-    <div className="space-y-5 sm:space-y-6 mb-10 mt-10">
+    <div className="space-y-4 sm:space-y-6 mb-10 sm:mt-10  mt-0">
       {/* ── Hero Banner ── */}
-      <div className="rounded-[24px] sm:rounded-[28px] bg-[#174CD2] p-5 sm:p-8 text-white shadow-lg">
+      <div className="rounded-[24px] sm:rounded-[28px] bg-[#174CD2] p-4 sm:p-8 text-white shadow-lg">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex-1">
             <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-blue-200">
@@ -345,11 +345,11 @@ useEffect(() => {
 
 
 
-           
+{/*            
             <div className="rounded-2xl bg-white/15 px-5 sm:px-6 py-3 sm:py-4 backdrop-blur text-center min-w-[110px]">
               <p className="text-xs sm:text-sm text-blue-200">Overall Score</p>
               <p className="text-lg sm:text-xl font-bold mt-0.5">{Math.round(score)} / 1000</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
