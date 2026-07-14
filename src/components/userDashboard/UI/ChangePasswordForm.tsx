@@ -64,7 +64,7 @@ export default function ChangePasswordForm() {
   };
 
   return (
-    <div className="max-w-full lg:max-w-md w-full px-6">
+    <div className="max-w-full lg:max-w-md w-full sm:mt-10 mt-0 px-6">
       <h1 className="text-[#1A212F] text-[32px] lg:text-[40px] font-normal leading-normal tracking-[-0.64px] 
       lg:tracking-[-0.8px] mb-6 lg:mb-10 text-start">
         Change Password

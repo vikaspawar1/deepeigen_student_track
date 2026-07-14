@@ -200,8 +200,8 @@ export default function Showallcourses() {
 
                     <div className="course-divider my-4"></div>
 
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                        <div className="flex flex-nowrap items-center gap-18">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between sm:gap-0  gap-4 md:gap-0 ">
+                        <div className="flex flex-nowrap items-center gap-18 sm:gap-6 md:gap-18 lg:gap-6">
                             {/* Indian Fee */}
                             <div className="flex items-center gap-2">
                                 <div className="flex items-center font-bold text-2xl">

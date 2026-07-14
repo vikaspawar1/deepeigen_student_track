@@ -226,9 +226,11 @@ function ChoosePlanPremium() {
                 </button>
 
                 {/* Card */}
-                <div className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-6 md:p-8 lg:p-10">
+                <div className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-4 sm:p-6 md:p-8 lg:p-10
+                 max-w-full sm:max-w-[60vw] md:max-w-[95vw] lg:max-w-[60vw] mx-auto
+                ">
                     {/* Header */}
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 sm:mb-8 border-b border-gray-400 pb-6">
+                    <div className="flex flex-col xl:flex-row xl:justify-between xl:items-center gap-4 mb-6 sm:mb-8 border-b border-gray-400 pb-6">
                         <div>
                             <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold">
                                 {displayName} Plan - {getFriendlyDuration()}
@@ -239,9 +241,9 @@ function ChoosePlanPremium() {
                         </div>
 
                         {/* Duration Switcher */}
-                        <div className="flex items-center gap-3">
-                            <span className="text-sm sm:text-base font-semibold text-gray-800">Subscribe for</span>
-                            <div className="inline-flex bg-white border border-blue-200 rounded-full p-1 shadow-sm">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                            <span className="text-sm sm:text-base font-semibold text-gray-800 whitespace-nowrap">Subscribe for</span>
+                            <div className="flex flex-row bg-white border border-blue-200 rounded-full p-1 shadow-sm overflow-x-auto w-full sm:w-auto no-scrollbar justify-between gap-1 sm:gap-2">
                                 {durationOptions.map((opt) => {
                                     const isActive = normalizeDuration(selectedDuration) === opt.value;
                                     return (
@@ -255,7 +257,7 @@ function ChoosePlanPremium() {
                                                     return prev;
                                                 });
                                             }}
-                                            className={`px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+                                            className={`flex-1 text-center px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full whitespace-nowrap transition-all duration-200 cursor-pointer ${
                                                 isActive
                                                     ? "bg-blue-600 text-white shadow"
                                                     : "text-gray-600 hover:text-blue-600"
@@ -270,7 +272,7 @@ function ChoosePlanPremium() {
                     </div>
 
                     {/* Name / Email */}
-                    <div className="bg-[#f1f5fd] rounded-lg font-bricolage px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0 mb-6 sm:mb-8">
+                    <div className="bg-[#f1f5fd] rounded-lg font-bricolage px-4 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row md:justify-between gap-2 md:gap-0 mb-6 sm:mb-8">
                         <p className="text-sm sm:text-base">
                             <span className="font-medium">Name: </span>
                             {user ? `${user.first_name || ""} ${user.last_name || ""}`.trim() || user.username : "John Doe"}

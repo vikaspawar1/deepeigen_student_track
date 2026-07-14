@@ -12,9 +12,12 @@ import hero_video from "../../assets/course_videos/Hero-banner.mp4";
 import robo_video from "../../assets/Hero/Videos/Deep-Eigen-Website-Hero-1.mp4";
 
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
+import { selectUser } from "../../redux/slices/auth";
 
 export default function HeroSection() {
   const navigate = useNavigate();
+  const user = useAppSelector(selectUser);
 
   const mobileFeatures = [
     { img: books, label: "Basic to Advanced Courses" },
@@ -57,9 +60,11 @@ export default function HeroSection() {
                 cutting-edge machine learning, computer vision, and robotics
               </p>
             </div>
+
+            
             <button
               className="inline-flex h-[3rem] md:h-[3.25rem] items-center justify-center px-8 md:px-[4.25rem] rounded-lg bg-[#174CD2] text-white font-bold text-base md:text-lg border-none cursor-pointer transition-colors duration-300 ease-in-out w-fit mx-auto md:mx-0 hover:bg-[#0e38a5]"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate(user ? "/user_dashboard" : "/login")}
             >
               Join Now
             </button>
