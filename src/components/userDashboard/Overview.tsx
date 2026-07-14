@@ -70,6 +70,7 @@ type CourseBreakdown = {
   course_status: string;
   assignment_average: number;
   videos_completed: number;
+  total_lectures?: number;
   completed_assignments: number;
   course_performance_score: number;
   purchase_date?: string;
@@ -162,14 +163,14 @@ function CircularGauge({ score, max = 1500 }: { score: number; max?: number }) {
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-function fmt(dt: string | null | undefined) {
-  if (!dt) return "—";
-  return new Date(dt).toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-}
+// function fmt(dt: string | null | undefined) {
+//   if (!dt) return "—";
+//   return new Date(dt).toLocaleDateString("en-IN", {
+//     day: "2-digit",
+//     month: "short",
+//     year: "numeric",
+//   });
+// }
 
 function statusBadge(s: string) {
   const map: Record<string, string> = {
@@ -251,42 +252,12 @@ function ProgressRow({
   );
 }
 
-// ─── InfoTile ─────────────────────────────────────────────────────────────────
-function InfoTile({
-  label,
-  value,
-  highlight,
-}: {
-  label: string;
-  value: string;
-  highlight?: boolean;
-}) {
-  return (
-    <div
-      className={`rounded-2xl border px-4 py-3.5 ${
-        highlight
-          ? "border-blue-200 bg-blue-50"
-          : "border-slate-100 bg-slate-50"
-      }`}
-    >
-      <p className="text-xs sm:text-sm text-slate-500">{label}</p>
-      <p
-        className={`mt-1 text-lg sm:text-xl font-bold ${
-          highlight ? "text-[#174CD2]" : "text-slate-900"
-        }`}
-      >
-        {value}
-      </p>
-    </div>
-  );
-}
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function Overview() {
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [refreshing, setRefreshing] = useState(false);
 
   const fetchAnalytics = async () => {
     try {
@@ -313,11 +284,7 @@ export default function Overview() {
     }
   };
 
-  const handleRefresh = async () => {
-    setRefreshing(true);
-    await fetchAnalytics();
-    setRefreshing(false);
-  };
+
 
 useEffect(() => {
   let alive = true;
@@ -538,7 +505,9 @@ useEffect(() => {
 
                     {/* Per-course stats */}
                     <div className="flex items-center gap-4 mt-2 text-md text-slate-500">
-                      <span><i className="ri-shield-check-fill text-green-500"></i> <span className="font-semibold text-slate-700">{c.videos_completed}</span> / <span className="font-semibold text-slate-700">{c.total_lectures}</span> lectures done</span>
+                      <span><i className="ri-shield-check-fill text-green-500"></i> 
+                      <span className="font-semibold text-slate-700">{c.videos_completed}</span> / 
+                      <span className="font-semibold text-slate-700">{c.total_lectures}</span> lectures done</span>
                     </div>
 
                   </div>
