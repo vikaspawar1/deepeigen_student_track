@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Search, ArrowUp, MessageCircle, ChevronDown, ChevronUp, Send, X } from 'lucide-react';
+import { Search, MessageCircle, ChevronDown, ChevronUp, Send, X } from 'lucide-react';
 import { toast } from 'react-toastify';
 import '../styles/discussion-forum.css';
 import PostModal from './postmodal';
