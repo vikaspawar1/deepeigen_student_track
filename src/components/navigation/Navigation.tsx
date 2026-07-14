@@ -280,7 +280,7 @@ export default function Navigation() {
           ) : (
             <div className="relative" ref={desktopUserRef}>
               {/* Avatar + Name */}
-              <Link to="/accounts/profile"
+              <Link to="/accounts/overview"
 
                 className="flex items-center bg-[#f1f5fd] gap-3 px-6 py-3 rounded-lg hover:bg-gray-50 transition"
               >
@@ -492,7 +492,7 @@ export default function Navigation() {
                 ) : (
                   <div className="space-y-2">
                     <Link
-                      to="/accounts/profile"
+                      to="/accounts/overview"
                       className="flex items-center gap-3 py-3 text-gray-700 hover:bg-gray-50 rounded-md px-3"
                       onClick={() => setMobileOpen(false)}
                     >

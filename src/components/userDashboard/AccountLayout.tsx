@@ -24,16 +24,22 @@ export default function AccountLayout() {
     const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
     // Determine active section based on current URL
-    const getActiveSection = (): ActiveSection => {
-        if (location.pathname.includes("overview")) {
-            return "overview";
-        } else if (location.pathname.includes("billing") || location.pathname.includes("billings_invoices")) {
-            return "billing";
-        } else if (location.pathname.includes("settings")) {
-            return "settings";
-        }
+const getActiveSection = (): ActiveSection => {
+    if (
+        location.pathname === "/accounts" ||
+        location.pathname.includes("overview")
+    ) {
+        return "overview";
+    } else if (location.pathname.includes("billing") || location.pathname.includes("billings_invoices")) {
+        return "billing";
+    } else if (location.pathname.includes("settings")) {
+        return "settings";
+    } else if (location.pathname.includes("profile")) {
         return "profile";
-    };
+    }
+
+    return "overview";
+};
 
     const activeSection = getActiveSection();
 
