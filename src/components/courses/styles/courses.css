@@ -1,0 +1,86 @@
+.CourseComp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  /* p-6 */
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.CourseComp-container {
+  width: 100%;
+  max-width: 79vw;
+  box-sizing: border-box;
+}
+
+.CourseComp-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.CourseComp-heading {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 400;
+  text-align: center;
+}
+
+.CourseComp-subheading {
+  color: #666;
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 768px)  {
+  .course-card{
+    width: 100%;
+  }
+  .CourseComp {
+    padding: 1.5rem;
+    /* p-6 */
+  }
+
+  .CourseComp-subheading {
+    margin-bottom: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .CourseComp {
+    padding: 1.5rem;
+    /* p-6 */
+  }
+
+  .CourseComp-header {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .CourseComp-subheading {
+    margin-bottom: 16px;
+  }
+}
+
+
+/* Tablet */
+@media (max-width: 1024px)  {
+  .course-card{
+    width: 100%;
+  }
+  .CourseComp {
+    padding: 1.5rem;
+    /* p-6 */
+  }
+
+  .CourseComp-subheading {
+    margin-bottom: 24px;
+  }
+}

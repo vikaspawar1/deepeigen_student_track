@@ -1,0 +1,476 @@
+.team-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 80px 24px;
+  background: #fff;
+
+  .team-container {
+    width: 100%;
+    max-width: 1052px;
+    display: flex;
+    flex-direction: column;
+    gap: 112px;
+  }
+
+  .team-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-title {
+    color: #1A212F;
+    font-family: 'Bricolage Grotesque', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    margin: 0;
+  }
+
+  .section-subtitle {
+    color: rgba(26, 33, 47, 0.7);
+    font-family: 'Bricolage Grotesque', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 324px));
+    gap: 40px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* 
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.team-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 324px;
+  border-radius: 30.28px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.team-name {
+  color: #1A212F;
+  font-family: 'Bricolage Grotesque', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.18px;
+  margin: 0;
+}
+
+.team-role {
+  color: rgba(26, 33, 47, 0.7);
+  font-family: 'Bricolage Grotesque', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  white-space: pre-line;
+} */
+
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: none;
+    width: 100%;
+    max-width: 320px;
+    /* perfect for mobile & tablets */
+  }
+
+  .team-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* keeps image square */
+    border-radius: 12px;
+    overflow: hidden;
+  } 
+
+  .team-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .team-info {
+    width: 100%;
+    /* border: 1px solid #000; */
+    padding: 8px 10px;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .team-name {
+    color: #1A212F;
+    font-family: 'Bricolage Grotesque', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .team-role {
+    color: rgba(26, 33, 47, 0.7);
+    font-family: 'Bricolage Grotesque', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 4px 0 0;
+    white-space: normal;
+    /* ensures wrapping */
+  }
+
+  .accordion-wrapper {
+    width: 100%;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #d9d9d9b4;
+    border: 1px solid rgba(26, 33, 47, 0.12);
+  }
+
+  .accordion-toggle {
+    width: 100%;
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .accordion-header {
+    width: 100%;
+    padding: 26px 28px;
+    background: transparent;
+    display: flex;    flex-direction: row;    align-items: start;
+    justify-content: space-between;
+    gap: 16px;
+    transition: background 0.2s ease;
+    text-align: left;
+  }
+
+  .accordion-toggle:hover .accordion-header {
+    background: rgba(236, 245, 255, 0.7);
+  }
+
+  .accordion-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .accordion-icon {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    width: 32px;
+    height: 32px;
+    color: #5d5d60;
+    font-size: 22px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-icon.open {
+    transform: rotate(180deg);
+  }
+
+  .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+  }
+
+  .accordion-panel.open {
+    max-height: 3000px;
+    opacity: 1;
+    padding: 20px 28px 28px;
+  }
+
+  .accordion-header .section-title {
+    margin-bottom: 6px;
+    font-size: 20px;
+  }
+
+  .accordion-header .section-subtitle {
+    margin: 0;
+    max-width: 720px;
+    color: rgba(26, 33, 47, 0.7);
+  }
+
+  .team-grid.advisory-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    width: 100%;
+  }
+
+  .team-grid.advisory-grid .team-card {
+    max-width: none;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.75);
+    text-align: left;
+  }
+
+  .team-grid.advisory-grid .team-image-wrapper {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+  }
+
+  .team-grid.advisory-grid .team-info {
+    padding: 16px 0 0;
+  }
+
+  .team-grid.advisory-grid .team-name {
+    font-size: 17px;
+  }
+
+  .team-grid.advisory-grid .team-role {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .team-page {
+    padding: 60px 20px;
+  }
+
+  .team-container {
+    gap: 80px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .section-subtitle {
+    font-size: 2vw;
+  }
+
+  .team-grid {
+    gap: 32px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .team-page-wrapper {
+    padding: 40px 16px;
+  }
+
+  .team-container {
+    gap: 60px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    letter-spacing: -0.44px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .team-card {
+    max-width: 100%;
+  }
+
+  .team-info {
+    padding: 8px 10px;
+  }
+
+  .team-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .team-role {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 3px 0 0;
+  }
+
+  .accordion-header {
+    padding: 20px 16px;
+    gap: 12px;
+  }
+
+  .accordion-header .section-title {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .accordion-header .section-subtitle {
+    font-size: 12px;
+  }
+
+  .accordion-panel.open {
+    padding: 16px 16px 24px;
+  }
+
+  .accordion-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+
+  .team-grid.advisory-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .team-grid.advisory-grid .team-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .team-grid.advisory-grid .team-name {
+    font-size: 14px;
+  }
+
+  .team-grid.advisory-grid .team-role {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .team-page-wrapper {
+    padding: 30px 12px;
+  }
+
+  .team-container {
+    gap: 50px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    letter-spacing: -0.4px;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+  }
+
+  .team-name {
+    font-size: 13px;
+  }
+
+  .team-role {
+    font-size: 11px;
+  }
+
+  .accordion-header .section-title {
+    font-size: 15px;
+  }
+
+  .accordion-header .section-subtitle {
+    font-size: 11px;
+  }
+
+  .team-grid.advisory-grid .team-card {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .team-page-wrapper {
+    padding: 24px 10px;
+  }
+
+  .team-container {
+    gap: 40px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .section-subtitle {
+    font-size: 12px;
+  }
+
+  .team-name {
+    font-size: 12px;
+  }
+
+  .team-role {
+    font-size: 10px;
+  }
+
+  .accordion-header {
+    padding: 16px 12px;
+  }
+
+  .accordion-header .section-title {
+    font-size: 14px;
+  }
+
+  .accordion-header .section-subtitle {
+    font-size: 10px;
+  }
+
+  .accordion-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+}

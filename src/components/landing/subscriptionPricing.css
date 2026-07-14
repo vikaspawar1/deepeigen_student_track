@@ -1,0 +1,151 @@
+:root {
+  --pricing-bg-white: #FFF;
+  --pricing-fg-grey-1: #1A212F;
+  --pricing-fg-grey-2: rgba(26, 33, 47, 0.70);
+  --pricing-fg-grey-3: rgba(26, 33, 47, 0.40);
+  --pricing-fg-secondary: rgba(23, 76, 210, 0.48);
+  --pricing-bg-primary: #174CD2;
+  --pricing-fg-inverse-1: #FFF;
+  --pricing-border-grey-2: rgba(26, 33, 47, 0.24);
+  --pricing-fg-primary: #174CD2;
+  --pricing-border-primary: #174CD2;
+  --pricing-cat-a: #0F9C95;
+  --pricing-cat-b: #F59949;
+  --pricing-check-green: #0F9C0F;
+  --pricing-cross-red: #CE2823;
+  --pricing-best-value-bg: #FFE4C3;
+  --pricing-best-value-text: #8E5004;
+}
+
+/* Base — all screens */
+.Subscription-container-wrapper {
+  padding: 1.5rem 1rem;
+  background: var(--pricing-bg-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.pricing-header {
+  width: 100%;
+  max-width: 776px;
+  margin: 0 auto 54px;
+  text-align: center;
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pricing-title {
+  color: var(--pricing-fg-grey-1);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  margin: 0 0 8px;
+}
+
+.pricing-description {
+  color: rgb(105, 95, 95);
+  font-size: clamp(0.85rem, 3vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.4;
+  max-width: 700px;
+  width: 100%;
+}
+
+.or-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 27px;
+  margin: 24px 0;
+  width: 100%;
+}
+
+.or-divider .line {
+  flex: 1;
+  height: 1px;
+  background: var(--pricing-border-grey-2);
+}
+
+.or-divider span {
+  color: var(--pricing-fg-grey-1);
+  font-size: 1rem;
+}
+
+/* Tablet — up to 1023px */
+@media (max-width: 1023px) {
+  .Subscription-container-wrapper {
+    padding: 1.5rem;
+    /* p-6 */
+  }
+
+  .pricing-header {
+    margin-bottom: 40px;
+  }
+}
+
+/* Small tablet / large mobile — up to 768px */
+@media (max-width: 768px) {
+  .Subscription-container-wrapper {
+    padding: 1.5rem;
+    /* p-6 */
+  }
+
+  .pricing-header {
+    margin-bottom: 32px;
+  }
+
+  .pricing-description {
+    max-width: 100%;
+  }
+}
+
+/* Mobile — up to 480px */
+@media (max-width: 480px) {
+  .Subscription-container-wrapper {
+    padding: 1rem 0.75rem;
+  }
+
+  .pricing-title {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+
+  .pricing-description {
+    max-width: 100%;
+    font-size: 0.875rem;
+  }
+
+  .pricing-header {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
+
+/* 320px tiny phones */
+@media (max-width: 360px) {
+  .Subscription-container-wrapper {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .pricing-title {
+    font-size: 1.1rem;
+    letter-spacing: -0.4px;
+  }
+
+  .pricing-description {
+    font-size: 0.8rem;
+  }
+
+  .pricing-header {
+    margin-bottom: 16px;
+    margin-top: 16px;
+  }
+}
