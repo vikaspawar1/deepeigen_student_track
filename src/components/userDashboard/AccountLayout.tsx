@@ -4,6 +4,7 @@ import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/slices/auth";
 import { logoutUser } from "./data/typesprofile";
+import ChatWidget from "./chatbot/ChatWidget";
 
 // import bill from "../../assets/Media/Images/bill.svg"
 
@@ -378,6 +379,7 @@ const getActiveSection = (): ActiveSection => {
                 <div className="flex-1 flex flex-col px-6 lg:px-12 pt-8 lg:pt-14 min-h-screen overflow-x-hidden">
                     <Outlet />
                 </div>
+                <ChatWidget />
             </div>
         </div>
     );

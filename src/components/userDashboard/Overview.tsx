@@ -35,6 +35,9 @@ type AnalyticsSummary = {
   subscribed_courses?: number;
   subscribed_courses_completed?: number;
   subscribed_courses_started?: number;
+  started_courses?: number;
+  total_assignments?: number;
+  assignment_progress_percentage?: number;
   subscription_info?: SubscriptionInfo | null;
   score_breakdown?: {
     course_completion?: { earned: number; max: number; percent: number };
@@ -366,7 +369,7 @@ useEffect(() => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             <MetricCard
               title="Overall Progress"
               value={`${s.overall_completion.toFixed(0)}%`}
@@ -390,8 +393,22 @@ useEffect(() => {
               icon=""
             />
 
+            {/* <MetricCard
+              title="Started Courses"
+              value={`${s.started_courses ?? 0}`}
+              subtitle={`${s.purchased_courses ?? 0} purchased`}
+              icon=""
+            /> */}
+
             <MetricCard
-              title="Average Assignment Score"
+              title="Assignment Progress"
+              value={`${(s.assignment_progress_percentage ?? 0).toFixed(1)}%`}
+              subtitle={`${s.assignments_submitted} submitted · ${s.total_assignments ?? 0} total`}
+              icon=""
+            />
+
+            <MetricCard
+              title="Average Assignment Score (admin)"
               value={`${s.assignment_average.toFixed(1)}%`}
               subtitle="Average score"
               icon=""
