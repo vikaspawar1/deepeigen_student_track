@@ -217,7 +217,7 @@ export default function PlaylistSummary() {
   const assignmentTotal = 100 * (playlist.assignments_count || 0)
 
   return (
-    <div className="font-bricolage w-full min-h-screen bg-[#e9effb] px-4 py-8 sm:py-12 md:py-16 flex flex-col justify-center items-center">
+    <div className="font-bricolage w-full min-h-screen bg-white px-4 py-8 sm:py-12 md:py-16 flex flex-col justify-center items-center">
       {/* Container card */}
       <div className="w-full max-w-[100vw]   sm:max-w-[60vw]  md:max-w-[90vw] lg:max-w-[60vw] bg-white rounded-[24px] border border-slate-200 p-6 sm:p-10 md:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
         

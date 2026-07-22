@@ -908,7 +908,7 @@ export default function BillingAndInvoices({ billingData }: BillingAndInvoicesPr
                               setSelectedCourseId(item.id);
                               setPurchasedModal(true);
                             }}
-                            className="text-[#174CD2] font-bricolage text-xs lg:text-xs font-semibold underline hover:text-[#0f3ead] whitespace-nowrap text-right"
+                            className="text-[#174CD2] font-bricolage text-xs cursor-pointer lg:text-xs font-semibold underline hover:text-[#0f3ead] whitespace-nowrap text-right"
                           >
                             View Payment History
                           </button>

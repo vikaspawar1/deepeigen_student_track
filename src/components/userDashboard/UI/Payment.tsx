@@ -486,7 +486,7 @@ export default function Payment() {
                 <button
                   type="submit"
                   disabled={isProcessing}
-                  className="w-full py-3 px-4 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+                  className="w-full py-3 px-4 bg-blue-700 cursor-pointer text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
                 >
                   {isProcessing ? (
                     <span className="flex items-center justify-center">

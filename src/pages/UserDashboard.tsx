@@ -1,5 +1,5 @@
 import LoggedIn from "../components/userDashboard/LoggedIn"
-import ChatWidget from "../components/userDashboard/chatbot/ChatWidget"
+import ChatWidget from "../chatbot/ChatWidget"
 
 const UserDashboard = () => {
   return (

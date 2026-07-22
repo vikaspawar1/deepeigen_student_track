@@ -4,7 +4,7 @@ import api from "../../lib/api"
 import { useAppSelector } from "../../redux/hooks"
 import { selectUser, selectIsAdmin } from "../../redux/slices/auth"
 import { toast } from "react-toastify"
-import Loader from "../ui/Loader"
+import Loader from "../userDashboard/data/ui/Loader"
 
 declare global {
   interface Window {

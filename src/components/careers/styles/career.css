@@ -370,7 +370,9 @@
     .careers-container {
         gap: 20px;
     }
-   
+   .jobs-section{
+    width: 90vw;
+   }
 
     .careers-title {
         font-size: 28px;
@@ -380,6 +382,7 @@
     .hero-image {
         min-height: 180px;
         max-height: 230px;
+        width: 90vw;
     }
 
     .careers-title {

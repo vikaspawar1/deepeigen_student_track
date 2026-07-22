@@ -2,6 +2,7 @@ import HeroSection from '../components/landing/HeroSection'
 import Courses from '../components/landing/Courses'
 import SubscriptionPricing from '../components/landing/SubscriptionPricing'
 import FAQ from './FAQ'
+import ChatWidget from "../chatbot/ChatWidget"
 
 const LandingPage = () => {
   return (
@@ -9,6 +10,7 @@ const LandingPage = () => {
       <HeroSection />
       <SubscriptionPricing />
       <Courses />
+      <ChatWidget mode="public" />
       {/* <AI_model /> */}
       <FAQ />
     </div>

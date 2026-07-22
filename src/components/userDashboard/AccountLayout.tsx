@@ -4,7 +4,7 @@ import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/slices/auth";
 import { logoutUser } from "./data/typesprofile";
-import ChatWidget from "./chatbot/ChatWidget";
+import ChatWidget from "../../chatbot/ChatWidget";
 
 // import bill from "../../assets/Media/Images/bill.svg"
 
