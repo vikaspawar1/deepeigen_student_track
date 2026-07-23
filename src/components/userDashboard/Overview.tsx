@@ -2,10 +2,8 @@ import { useEffect, useState, useMemo } from "react";
 import api from "../../lib/api";
 import {
   PlayCircle,
-  ChevronRight,
   Search,
   AlertCircle,
-  X,
   RefreshCw,
   ArrowUpDown,
   TrendingUp,
@@ -154,17 +152,17 @@ interface DELSDetailResponse {
   what_changed?: DELSWhatChanged;
 }
 
-interface EnrollmentMetricsResponse {
-  course_id: number;
-  PALC: number;
-  ASR: number;
-  ATS: number;
-  AQS: number;
-  ECI: number;
-  MPA: number;
-  OAB: number;
-  LCR: number;
-}
+// interface EnrollmentMetricsResponse {
+//   course_id: number;
+//   PALC: number;
+//   ASR: number;
+//   ATS: number;
+//   AQS: number;
+//   ECI: number;
+//   MPA: number;
+//   OAB: number;
+//   LCR: number;
+// }
 
 
 
@@ -237,10 +235,10 @@ export default function Overview() {
   const [delsDetail, setDelsDetail] = useState<DELSDetailResponse | null>(null);
 
   // Metrics Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [metricsLoading, setMetricsLoading] = useState(false);
-  const [metricsError, setMetricsError] = useState<string | null>(null);
-  const [selectedMetrics, setSelectedMetrics] = useState<EnrollmentMetricsResponse | null>(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [metricsLoading, setMetricsLoading] = useState(false);
+  // const [metricsError, setMetricsError] = useState<string | null>(null);
+  // const [selectedMetrics, setSelectedMetrics] = useState<EnrollmentMetricsResponse | null>(null);
 
   // Aggregated ASR / ATS / AQS across all enrolled courses
   const [aggregatedMetrics, setAggregatedMetrics] = useState<{
@@ -319,25 +317,25 @@ export default function Overview() {
   }, []);
 
   // 4. GET /enrollments/{enrollment_id}/metrics/
-  const handleViewMetrics = async (enrollmentId: number) => {
-    setIsModalOpen(true);
-    setMetricsLoading(true);
-    setMetricsError(null);
-    setSelectedMetrics(null);
+  // const handleViewMetrics = async (enrollmentId: number) => {
+  //   setIsModalOpen(true);
+  //   setMetricsLoading(true);
+  //   setMetricsError(null);
+  //   setSelectedMetrics(null);
 
-    try {
-      const res = await requestFallback<EnrollmentMetricsResponse>(
-        `/student-analytics/enrollments/${enrollmentId}/metrics/`,
-        `/enrollments/${enrollmentId}/metrics/`
-      );
-      setSelectedMetrics(res);
-    } catch (err: any) {
-      console.error("Failed fetching enrollment metrics:", err);
-      setMetricsError(err?.response?.data?.error || "Failed to load enrollment metrics.");
-    } finally {
-      setMetricsLoading(false);
-    }
-  };
+  //   try {
+  //     const res = await requestFallback<EnrollmentMetricsResponse>(
+  //       `/student-analytics/enrollments/${enrollmentId}/metrics/`,
+  //       `/enrollments/${enrollmentId}/metrics/`
+  //     );
+  //     setSelectedMetrics(res);
+  //   } catch (err: any) {
+  //     console.error("Failed fetching enrollment metrics:", err);
+  //     setMetricsError(err?.response?.data?.error || "Failed to load enrollment metrics.");
+  //   } finally {
+  //     setMetricsLoading(false);
+  //   }
+  // };
 
   // Helper selectors
   const summary = perfData?.summary;
@@ -959,54 +957,7 @@ export default function Overview() {
 
 
 
-      {/* ── Metrics Modal ────────────────────────────────────────────── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-          <div className="w-full max-w-6xl bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl 
-          space-y-8 h-[45vh] overflow-y-auto">
-
-            <div className="flex justify-between items-center border-b border-gray-200 pb-1">
-              <h3 className="font-bold text-base text-black">Enrollment Sub-Metrics</h3>
-              <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-600 p-1 cursor-pointer rounded-lg">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {metricsLoading ? (
-              <div className="py-12 flex flex-col items-center justify-center text-gray-500 text-xs">
-                <div className="w-8 h-8 rounded-full border-4 border-gray-200 border-t-blue-600 animate-spin mb-3" />
-                Fetching sub-metrics from backend...
-              </div>
-            ) : metricsError ? (
-              <div className="p-4 bg-rose-50 text-rose-600 text-xs text-center rounded-xl">{metricsError}</div>
-            ) : selectedMetrics ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-8 text-xs">
-                {[
-                  { name: "PALC", label: "Pace-Adjusted Lecture", val: selectedMetrics.PALC },
-                  { name: "ASR", label: "Assignment Submission Rate", val: selectedMetrics.ASR },
-                  { name: "ATS", label: "Assignment Timeliness", val: selectedMetrics.ATS },
-                  { name: "AQS", label: "Assignment Quality", val: selectedMetrics.AQS },
-                  { name: "ECI", label: "Engagement & Consistency", val: selectedMetrics.ECI },
-                  // { name: "MPA", label: "Module Progress Alignment", val: selectedMetrics.MPA },
-                  // { name: "OAB", label: "Overdue Buffer", val: selectedMetrics.OAB },
-                  { name: "LCR", label: "Lecture Completion Rate", val: selectedMetrics.LCR },
-                ].map((m) => (
-                  <div key={m.name} className="p-3 rounded-2xl bg-gray-50 border border-gray-200">
-                    <div className="flex justify-between font-bold mb-1">
-                      <span className="text-blue-600 text-lg">{m.name}</span>
-                      <span className="text-black">{m.val}%</span>
-                    </div>
-                    <p className="text-[16px] font-[400] text-gray-500 mb-2">{m.label}</p>
-                    <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-blue-600 rounded-full" style={{ width: `${Math.min(100, Math.max(0, m.val))}%` }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        </div>
-      )}
+   
 
       {/* ── Feedback Modal ───────────────────────────────────────────── */}
       {activeFeedback && (
