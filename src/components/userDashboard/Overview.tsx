@@ -576,7 +576,7 @@ export default function Overview() {
       {/* ── Overall Score + Score Breakdown (two-column) ─────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
         <div className="lg:col-span-4 p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 flex flex-col items-center justify-center gap-4">
-          <span className="text-base sm:text-lg font-bold text-gray-800">Overall Score</span>
+          <span className="text-base sm:text-lg font-bold text-gray-800">Deep Eigen Learning Score</span>
           <div className="relative w-36 h-36 sm:w-40 sm:h-40 flex items-center justify-center">
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 160 160">
               <circle cx="80" cy="80" r="62" stroke="#e5e7eb" strokeWidth="12" fill="transparent" />
@@ -593,10 +593,10 @@ export default function Overview() {
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-3xl sm:text-4xl font-black text-gray-900">{Math.round(score)}</span>
-              <span className="text-xs text-gray-400">/ {maxScore} pts</span>
+              {/* <span className="text-xs text-gray-400">/ {maxScore} pts</span> */}
             </div>
           </div>
-          <span className="text-xs text-gray-400">Max {maxScore} pts</span>
+          <span className="text-SM text-gray-400">Max {maxScore} pts</span>
 <span
   className={`px-4 py-1.5 text-xs font-bold rounded-full border ${
     tier === "Elite"
@@ -635,7 +635,7 @@ export default function Overview() {
         {/* Right: Score Breakdown */}
         <div className="lg:col-span-8 p-5 sm:p-6 rounded-2xl bg-white border border-gray-200  flex flex-col justify-center gap-5">
           <div>
-            <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-0.5">Score Breakdown</p>
+            <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-0.5"> DEL Score Breakdown</p>
             <h2 className="text-base sm:text-lg font-black text-gray-900">Points earned by learning activity</h2>
           </div>
 
@@ -679,7 +679,7 @@ export default function Overview() {
     </h3>
 
     <span className="text-sm text-gray-500">
-      DELS Score Growth
+      DEL Score Growth
     </span>
   </div>
 
@@ -818,15 +818,16 @@ export default function Overview() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-end pt-2">
+              {/* <div className="flex items-center justify-end pt-2">
                 <button
                   onClick={() => handleViewMetrics(c.course_id)}
-                  className="w-full sm:w-auto px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm flex items-center justify-center cursor-pointer gap-1 transition-colors"
+                  className="w-full sm:w-auto px-4 py-3 rounded-xl  text-blue-600 hover:underline font-semibold text-sm flex items-center justify-center cursor-pointer gap-1 transition-colors"
                 >
                   <span>View Metrics</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
-              </div>
+              </div> */}
+
             </div>
           ))}
         </div>
@@ -962,7 +963,7 @@ export default function Overview() {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
           <div className="w-full max-w-6xl bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl 
-          space-y-8 h-[60vh] overflow-y-auto">
+          space-y-8 h-[45vh] overflow-y-auto">
 
             <div className="flex justify-between items-center border-b border-gray-200 pb-1">
               <h3 className="font-bold text-base text-black">Enrollment Sub-Metrics</h3>
@@ -986,8 +987,8 @@ export default function Overview() {
                   { name: "ATS", label: "Assignment Timeliness", val: selectedMetrics.ATS },
                   { name: "AQS", label: "Assignment Quality", val: selectedMetrics.AQS },
                   { name: "ECI", label: "Engagement & Consistency", val: selectedMetrics.ECI },
-                  { name: "MPA", label: "Module Progress Alignment", val: selectedMetrics.MPA },
-                  { name: "OAB", label: "Overdue Buffer", val: selectedMetrics.OAB },
+                  // { name: "MPA", label: "Module Progress Alignment", val: selectedMetrics.MPA },
+                  // { name: "OAB", label: "Overdue Buffer", val: selectedMetrics.OAB },
                   { name: "LCR", label: "Lecture Completion Rate", val: selectedMetrics.LCR },
                 ].map((m) => (
                   <div key={m.name} className="p-3 rounded-2xl bg-gray-50 border border-gray-200">
