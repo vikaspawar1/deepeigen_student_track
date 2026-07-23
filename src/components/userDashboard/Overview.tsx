@@ -427,19 +427,47 @@ export default function Overview() {
 
   const rawTrend = delsDetail?.trend;
   let chartTrend: any[] = [];
-  if (rawTrend && rawTrend.length > 1) {
-    chartTrend = rawTrend;
-  } else if (rawTrend && rawTrend.length === 1) {
-    const single = rawTrend[0];
-    const prevDate = new Date(new Date(single.date).getTime() - 86400000 * 7).toISOString();
+  const todayStr = new Date().toISOString().split("T")[0];
+
+  if (rawTrend && rawTrend.length > 0) {
+    chartTrend = rawTrend.map((item: any) => ({ ...item }));
+    const lastItem = chartTrend[chartTrend.length - 1];
+    let lastDateStr = "";
+    if (lastItem && lastItem.date) {
+      try {
+        lastDateStr = new Date(lastItem.date).toISOString().split("T")[0];
+      } catch {
+        lastDateStr = String(lastItem.date).split("T")[0];
+      }
+    }
+
+    if (lastDateStr === todayStr) {
+      chartTrend[chartTrend.length - 1] = {
+        ...lastItem,
+        dels_value: score,
+        tier: tier,
+      };
+    } else if (lastDateStr && lastDateStr < todayStr) {
+      chartTrend.push({
+        date: todayStr,
+        dels_value: score,
+        tier: tier,
+      });
+    }
+  }
+
+  if (chartTrend.length === 1) {
+    const single = chartTrend[0];
+    const prevDate = new Date(new Date(single.date).getTime() - 86400000 * 7).toISOString().split("T")[0];
     chartTrend = [
       { date: prevDate, dels_value: 0, tier: "At Risk" },
       { date: single.date, dels_value: single.dels_value, tier: single.tier },
     ];
-  } else {
+  } else if (chartTrend.length === 0) {
+    const prevDate = new Date(Date.now() - 86400000 * 7).toISOString().split("T")[0];
     chartTrend = [
-      { date: new Date(Date.now() - 86400000 * 7).toISOString(), dels_value: 0, tier: "At Risk" },
-      { date: new Date().toISOString(), dels_value: score, tier },
+      { date: prevDate, dels_value: 0, tier: "At Risk" },
+      { date: todayStr, dels_value: score, tier },
     ];
   }
 
@@ -490,9 +518,9 @@ export default function Overview() {
       <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-4">
         {/* Overall Progress */}
         <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between gap-1">
-          <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-widest text-gray-500">Overall Progress</span>
+          <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-widest text-gray-500">Course Progress</span>
           <span className="text-xl sm:text-2xl font-black text-gray-900">{overallCompletionPct}%</span>
-          <span className="text-[11px] sm:text-sm text-gray-500">{completedCourses} / {totalCourses} courses done</span>
+          <span className="text-[11px] sm:text-sm text-gray-500">{completedCourses} / {totalCourses} courses done </span>
         </div>
 
         {/* Assignments */}
@@ -505,7 +533,7 @@ export default function Overview() {
         {/* ATS */}
         <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between gap-1">
           <div className="flex items-center justify-between gap-1">
-            <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-widest text-gray-500">Assignment Timeline Score</span>
+            <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-widest text-gray-500">Timeliness Score</span>
             {/* <span className="text-[9px] sm:text-sm font-semibold text-violet-500 bg-violet-50 px-2 py-0.5 rounded-full truncate">Timeliness</span> */}
           </div>
           <span className="text-xl sm:text-2xl font-black text-gray-900">
@@ -517,7 +545,7 @@ export default function Overview() {
         {/* AQS */}
         <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between gap-1">
           <div className="flex items-center justify-between gap-1">
-            <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-widest text-gray-500">Assignment Quality Score</span>
+            <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-widest text-gray-500">Quality Score</span>
             {/* <span className="text-[9px] sm:text-[10px] font-semibold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full truncate">Quality</span> */}
           </div>
           <span className="text-xl sm:text-2xl font-black text-gray-900">
@@ -569,21 +597,35 @@ export default function Overview() {
             </div>
           </div>
           <span className="text-xs text-gray-400">Max {maxScore} pts</span>
-          <span
-            className={`px-4 py-1.5 text-xs font-bold rounded-full border ${
-              tier === "Elite" || tier === "Strong"
-                ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                : tier === "Consistent" || tier === "Proficient"
-                ? "bg-blue-50 text-blue-700 border-blue-200"
-                : tier === "Developing"
-                ? "bg-amber-50 text-amber-700 border-amber-200"
-                : "bg-rose-50 text-rose-600 border-rose-200"
-            }`}
-          >
-            {tier === "Elite" || tier === "Strong" || tier === "Consistent" || tier === "Proficient"
-              ? tier
-              : "Needs focus"}
-          </span>
+<span
+  className={`px-4 py-1.5 text-xs font-bold rounded-full border ${
+    tier === "Elite"
+      ? "bg-purple-50 text-purple-700 border-purple-200"
+      : tier === "Outstanding"
+      ? "bg-green-50 text-green-700 border-green-200"
+      : tier === "Strong"
+      ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+      : tier === "Consistent"
+      ? "bg-blue-50 text-blue-700 border-blue-200"
+      : tier === "Proficient"
+      ? "bg-cyan-50 text-cyan-700 border-cyan-200"
+      : tier === "Developing"
+      ? "bg-amber-50 text-amber-700 border-amber-200"
+      : tier === "Beginner"
+      ? "bg-orange-50 text-orange-700 border-orange-200"
+      : "bg-orange-50 text-orange-700 border-rose-200"
+  }`}
+>
+  {tier === "Elite" ||
+  tier === "Outstanding" ||
+  tier === "Strong" ||
+  tier === "Consistent" ||
+  tier === "Proficient" ||
+  tier === "Developing" ||
+  tier === "Beginner"
+    ? tier
+    : "Getting Started"}
+</span>
         </div>
 
 
