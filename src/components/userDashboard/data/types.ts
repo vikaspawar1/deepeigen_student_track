@@ -19,6 +19,17 @@ export interface Certificate {
   completionDate: string;
   grade: string;
   image: string;
+  courseId?: string;
+  candidateName?: string;
+  courseName?: string;
+  instructorName?: string;
+  instructorDesignation?: string;
+  awardDate?: string;
+  registrationCode?: string;
+  signatureImage?: string;
+  qrImage?: string;
+  logoImage?: string;
+  backgroundImage?: string;
 }
 
 export interface Playlist {

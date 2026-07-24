@@ -45,6 +45,8 @@ import ChoosePlanPremium from './components/landing/ChoosePlanPremium'
 import Showallcourses from './components/courses/ui/Showallcourses'
 
 
+import VerifyCertificatePage from './pages/VerifyCertificatePage'
+
 function App() {
   return (
     <>
@@ -55,6 +57,9 @@ function App() {
         toastClassName="bg-white text-gray-800 shadow-lg rounded-[10px] border border-gray-200 relative flex p-1 min-h-10 justify-between overflow-hidden cursor-pointer mb-2 text-sm font-semibold"
       />
       <Routes>
+        <Route path="/verify-certificate" element={<VerifyCertificatePage />} />
+        <Route path="/verify_certificate" element={<VerifyCertificatePage />} />
+
         <Route element={<MainLayout />}>
 
           <Route path="/" element={<LandingPage />} />

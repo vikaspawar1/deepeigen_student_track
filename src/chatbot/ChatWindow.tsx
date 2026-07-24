@@ -72,7 +72,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
               DeepEigen Assistant
             </h3>
             <p className="text-xs text-blue-100">
-              Online • Ask me anything
+              Ask me anything
             </p>
           </div>
         </div>
